@@ -3,7 +3,11 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     const withdrawInput = document.getElementById('withdraw-input');
     const withdrawTotalValue = withdrawInput.value;
     const withdrawTotalValueString = parseFloat(withdrawTotalValue);
-
+    withdrawInput.value = "";
+    if (isNaN(withdrawTotalValueString)) {
+        alert("please Provide a number");
+        return;
+    }
 
     const withdrawAmount = document.getElementById('withdraw-amount');
     const withdrawAmountValue = withdrawAmount.innerText;
@@ -12,18 +16,18 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     withdrawAmount.innerText = withdrawTotal;
 
 
-
     const TotalBalance = document.getElementById('Total-balance');
     const TotalBalanceValue = TotalBalance.innerText;
     const TotalBalanceValueString = parseFloat(TotalBalanceValue);
-    const totalBalenceWithdraw = TotalBalanceValueString - withdrawTotal;
-    TotalBalance.innerText = totalBalenceWithdraw;
+    const totalBalanceWithdraw = TotalBalanceValueString - withdrawTotal;
+    TotalBalance.innerText = totalBalanceWithdraw;
 
-    withdrawInput.value = "";
 
-    if (totalBalenceWithdraw < withdrawTotalValueString) {
-        alert("You Dont have Enaguf Mony to Withdraw")
+    if (totalBalanceWithdraw < withdrawTotal) {
+        alert("Dont hava a anagfe Balance");
+        return;
     }
+
 
 })
 
